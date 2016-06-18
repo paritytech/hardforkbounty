@@ -33,9 +33,11 @@ contract HardForkBounty {
     /// Claiming the bounty may only be done once per block and results in the
     /// tramnsfer of half of the remaining ether to the miner.
     function() {
-        if (msg.value > 0)
-            balances[msg.sender] += msg.value;
-        else if (
+        balances[msg.sender] += msg.value;
+    }
+    
+    function claim() {
+        if (
             // Ensure that TheDAO's code has been changed...
             // TODO: ...to a known good contract e.g. WithdrawDAO.
             sha3(at(0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413)) != 0x7278d050619a624f84f51987149ddb439cdaadfba5966f7cfaea7ad44340a4ba &&
@@ -77,4 +79,3 @@ contract HardForkBounty {
     mapping (address => uint) balances;
     uint lastPayout = 0;
 }
-
