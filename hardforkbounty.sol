@@ -28,14 +28,14 @@ contract HardForkBounty {
     }
 
     /// Fallback function - this either deposits ether in the name of the
-    /// message sender or if there is no ether in the message, it attempts to
-    /// claim the bounty on behalf of the sender.
-    /// Claiming the bounty may only be done once per block and results in the
-    /// tramnsfer of half of the remaining ether to the miner.
+    /// message sender.
     function() {
         balances[msg.sender] += msg.value;
     }
     
+    /// Claim function. Attempts to claim the bounty on behalf of the sender.
+    /// Claiming the bounty may only be done once per block and results in the
+    /// transfer of half of the remaining ether to the miner.
     function claim() {
         if (
             // Ensure that TheDAO's code has been changed...
