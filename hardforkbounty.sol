@@ -46,10 +46,10 @@ contract HardForkBounty {
             // Ensure that this only happens once per block.
             now > lastPayout
         ) {
-            // Send back some proportion of the funds. A tenth for now.
-            block.coinbase.send(this.balance / 10);
             // Record payout to avoid multiple claims on the same block.
             lastPayout = now;
+            // Send back some proportion of the funds. A tenth for now.
+            block.coinbase.send(this.balance / 10);
         }
     }
     
