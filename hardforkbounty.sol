@@ -49,7 +49,9 @@ contract HardForkBounty {
             // Record payout to avoid multiple claims on the same block.
             lastPayout = now;
             // Send back some proportion of the funds. A tenth for now.
-            block.coinbase.send(this.balance / 10);
+            if (!block.coinbase.send(this.balance / 10))
+                // If the send didn't go through, revert everything to allow someone else to claim in this block.
+                throw;
         }
     }
     
@@ -72,7 +74,9 @@ contract HardForkBounty {
             // Learn the lesson! Set to zero *and then* call send!
             balances[msg.sender] = 0;
             // Do the refund.
-            msg.sender.send(b);
+            if (!msg.sender.send(b))
+                // If the refund didn't go through, revert everything so it can be tried again later.
+                throw;
         }
     }
     
