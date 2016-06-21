@@ -3,10 +3,11 @@
 /// Licenced under Apache 2.
 
 /// A bounty program for ensuring the DAO hard fork does through.
-/// Everyone can put down a refundable deposit; miners can collect some fixed
+/// If they so choose, people by electing into the smart contract
+/// can put down a refundable deposit; miners can collect some fixed
 /// proportion of the remaining deposit, once per block, only when the DAO has
-/// had all funds returned and when the code has been changed (ideally we'll 
-/// propose that change, too). If the bounty isn't paid (hard fork doesn't go
+/// had all funds returned and when the code has been changed (ideally that
+/// change will be proposed, too). If the bounty isn't paid (hard fork doesn't go
 /// through) then deposits can be claimed once the block hits 1.9M.
 contract HardForkBounty {
     // Get the code at a particular address. Code provided by @chriseth.
