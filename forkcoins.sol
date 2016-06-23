@@ -1,6 +1,6 @@
 // A contract that takes deposits of ether and issues equal numbers of 'noFork' 
 // Tokens and 'fork' Tokens. These are tradable but only one can be turned 
-// back into after block 1900000 ether depending on whether the fork goes through.
+// back into ether after block 1900000 ether depending on whether the fork goes through.
 
 // a basic token interface
 contract Token {
